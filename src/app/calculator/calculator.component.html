@@ -1,0 +1,26 @@
+<div class="calculator">
+  <div class="display">{{ display }}</div>
+  <div class="buttons">
+    <button (click)="clear()">C</button>
+    <button (click)="append('/')">/</button>
+    <button (click)="append('*')">*</button>
+    <button (click)="append('-')">-</button>
+
+    <button (click)="append('7')">7</button>
+    <button (click)="append('8')">8</button>
+    <button (click)="append('9')">9</button>
+    <button (click)="append('+')" class="plus-button">+</button>
+
+    <button (click)="append('4')">4</button>
+    <button (click)="append('5')">5</button>
+    <button (click)="append('6')">6</button>
+
+    <button (click)="append('1')">1</button>
+    <button (click)="append('2')">2</button>
+    <button (click)="append('3')">3</button>
+    <button (click)="calculate()">=</button>
+
+    <button (click)="append('0')" class="zero-button">0</button>
+    <button (click)="append('.')">.</button>
+  </div>
+</div> 

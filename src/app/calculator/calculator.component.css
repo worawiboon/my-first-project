@@ -1,0 +1,81 @@
+.calculator {
+  width: 320px;
+  margin: 50px auto;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.display {
+  background-color: #222;
+  color: #fff;
+  font-size: 2.5em;
+  text-align: right;
+  padding: 20px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  min-height: 40px; /* Ensure display doesn't collapse */
+  overflow: hidden; /* Prevent text overflow */
+  word-wrap: break-word; /* Break long numbers */
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.buttons button {
+  padding: 20px;
+  font-size: 1.2em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.2s;
+}
+
+.buttons button:hover {
+  background-color: #f0f0f0;
+}
+
+.buttons button:active {
+  background-color: #e0e0e0;
+}
+
+/* Span the plus button across 2 rows if desired, or specific styling */
+.plus-button {
+  /* grid-row: span 2; */ /* Example if you want it to span two rows */
+  background-color: #ff9500;
+  color: white;
+}
+.plus-button:hover {
+  background-color: #e08500;
+}
+
+.zero-button {
+  grid-column: span 2; /* Make the zero button wider */
+}
+
+/* Style operators differently */
+.buttons button:nth-child(4n), /* Last button in each row of 4 (operators) */
+.buttons button:nth-child(1), /* Clear button */
+.buttons button:nth-child(17) /* Equals button */ {
+  background-color: #d4d4d2;
+}
+.buttons button:nth-child(4n):hover,
+.buttons button:nth-child(1):hover,
+.buttons button:nth-child(17):hover {
+  background-color: #c0c0c0;
+}
+
+.buttons button:nth-child(17) /* Equals button specific */ {
+  background-color: #ff9500;
+  color: white;
+}
+.buttons button:nth-child(17):hover {
+  background-color: #e08500;
+} 
