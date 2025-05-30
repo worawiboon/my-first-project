@@ -1,0 +1,70 @@
+<div class="game-container">
+  <div class="game-info">
+    <div>
+      <span>Lives: {{ playerLives }}</span>
+      <span style="margin-left: 20px;">Score: {{ score }}</span>
+      <span style="margin-left: 20px;">Weapon: {{ currentWeapon.name }}</span>
+    </div>
+    <div class="upgrades-info" *ngIf="!gameOver">
+      <p>--- Player Upgrades ---</p>
+      <span>[1] Player Speed (Lvl {{ playerSpeedLevel }}): {{ playerSpeed.toFixed(1) }} - Cost: {{ playerSpeedUpgradeCost }}</span>
+      <p style="margin-top: 8px;">--- Weapon Stat Upgrades (Global) ---</p>
+      <span>[2] Bullet Speed Mult (Lvl {{ bulletSpeedMultiplierLevel }}): x{{ currentBulletSpeedDisplayMultiplier }} - Cost: {{ bulletSpeedMultiplierUpgradeCost }}</span>
+      <span>[3] Fire Rate Mult (Lvl {{ fireRateMultiplierLevel }}): x{{ currentFireRateDisplayMultiplier }} - Cost: {{ fireRateMultiplierUpgradeCost }}</span>
+      
+      <p style="margin-top: 8px;">--- Acquire/Switch Weapons ---</p>
+      <ng-container *ngFor="let weapon of playerWeapons">
+        <span *ngIf="weapon.id !== 'pistol' && !weapon.acquired">
+          [4] Acquire {{ weapon.name }} - Cost: {{ weapon.cost }}
+        </span>
+      </ng-container>
+      <span>[Q] Switch Weapon (Current: {{ currentWeapon.name }})</span>
+      <p style="font-size: 0.8em; margin-top: 5px;">(Press number/Q to upgrade/buy/switch)</p>
+    </div>
+
+    <div class="upgrades-info" *ngIf="gameOver">
+        <p>--- Final Stats ---</p>
+        <span>Player Speed (Lvl {{ playerSpeedLevel }}): {{ playerSpeed.toFixed(1) }}</span>
+        <span>Bullet Speed Mult (Lvl {{ bulletSpeedMultiplierLevel }}): x{{ currentBulletSpeedDisplayMultiplier }}</span>
+        <span>Fire Rate Mult (Lvl {{ fireRateMultiplierLevel }}): x{{ currentFireRateDisplayMultiplier }}</span>
+        <p>Final Weapon: {{ currentWeapon.name }}</p>
+    </div>
+  </div>
+
+  <div id="gameArea" class="game-area">
+    <div id="player" class="player" [style.left.px]="playerX" [style.top.px]="playerY"></div>
+    <!-- Add Zombies -->
+    <div *ngFor="let zombie of zombies" 
+         class="zombie" 
+         [ngClass]="{
+           'zombie-normal': zombie.type === 'normal',
+           'zombie-runner': zombie.type === 'runner',
+           'zombie-brute': zombie.type === 'brute'
+         }"
+         [style.left.px]="zombie.x" 
+         [style.top.px]="zombie.y"
+         [style.width.px]="zombie.width"
+         [style.height.px]="zombie.height">
+      <!-- HP Bar -->
+      <div class="hp-bar-background">
+        <div class="hp-bar-foreground" [style.width.%]="(zombie.hp / zombie.maxHp) * 100"></div>
+      </div>
+    </div>
+    <!-- Bullets -->
+    <div *ngFor="let bullet of bullets" 
+         class="bullet" 
+         [style.left.px]="bullet.x" 
+         [style.top.px]="bullet.y"
+         [style.width.px]="bullet.width"
+         [style.height.px]="bullet.height">
+    </div>
+    <div *ngIf="gameOver" class="game-over-message">
+      <p>GAME OVER!</p>
+      <p>Your Score: {{ score }}</p>
+      <p>Press 'R' to Restart</p>
+    </div>
+  </div>
+  <p *ngIf="!gameOver" class="controls-info">
+    W,A,S,D: Move / Space: Shoot / Q: Switch Weapon / 1,2,3: Upgrades / 4: Buy Shotgun
+  </p>
+</div> 

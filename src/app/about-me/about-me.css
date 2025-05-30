@@ -1,0 +1,251 @@
+/* General Styles for About Me Page */
+.about-me-container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px 30px;
+  background-color: #f4f7f6; /* Main background for the page (behind cards) */
+  border-radius: 10px;
+  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); */ /* Shadow for main container, or remove if cards have enough */
+  font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif; /* Broader font stack */
+  color: #333;
+  line-height: 1.7;
+}
+
+.about-me-container header h1 {
+  text-align: center;
+  font-size: 3em; /* Slightly larger main title */
+  color: #2c3e50;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 20px;
+  font-weight: 600;
+}
+
+/* General h2 and h3 in cards (excluding profile-intro h2) */
+.about-me-container section:not(.profile-intro) h2 {
+    font-size: 1.8em;
+    color: #34495e;
+    font-weight: 500; /* Slightly lighter than h1 */
+}
+
+.about-me-container section h3 {
+    font-size: 1.5em;
+    color: #34495e; /* Ensured this is set for non-profile-intro sections too */
+    font-weight: 500;
+    margin-top: 30px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+}
+
+.section-icon {
+  margin-right: 10px;
+  font-size: 1.2em;
+  color: #007bff;
+}
+
+.about-me-container p {
+  margin-bottom: 15px;
+  color: #555;
+}
+
+/* Profile Introduction Section */
+.profile-intro {
+  text-align: center;
+  padding: 40px 25px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #ffffff;
+  border-radius: 8px;
+}
+
+.profile-intro h2 {
+  font-size: 2.4em; /* Adjusted size */
+  color: #ffffff;
+  margin-bottom: 10px;
+  font-weight: 500; /* Lighter weight for better readability on gradient */
+}
+
+.profile-intro .tagline {
+  font-size: 1.3em;
+  color: #e8e8e8; /* Slightly brighter for readability */
+  font-style: normal;
+  margin-bottom: 0;
+  font-weight: 300; /* Lighter weight for tagline */
+}
+
+.profile-picture {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 25px;
+  border: 6px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* Bio Section */
+.bio p {
+  text-align: justify;
+}
+
+/* Skills Section */
+.skills ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.skills li {
+  background-color: #f0f0f0;
+  color: #333;
+  padding: 10px 18px;
+  border-radius: 25px;
+  font-size: 1em;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  transition: transform 0.2s ease-out, background-color 0.3s, color 0.3s, box-shadow 0.2s;
+}
+
+.skills li:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.skill-icon {
+  margin-right: 8px;
+  font-size: 1.1em;
+}
+
+/* Projects Showcase Section */
+.projects-showcase {
+  margin-top: 30px;
+}
+
+.project-links {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center; /* Center links if they don't fill the row */
+}
+
+.project-link {
+  display: inline-block;
+  padding: 12px 25px;
+  font-size: 1.1em;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out;
+  text-align: center;
+}
+
+.project-link.calculator-link {
+  background-color: #28a745; /* Green */
+}
+.project-link.calculator-link:hover {
+  background-color: #1e7e34;
+}
+
+.project-link.zombie-link {
+  background-color: #dc3545; /* Red */
+}
+.project-link.zombie-link:hover {
+  background-color: #b02a37;
+}
+
+/* Contact Section */
+.contact ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.contact li {
+  margin-bottom: 10px;
+}
+
+.contact a {
+  color: #007bff;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+  color: #0056b3;
+}
+
+.contact-icon {
+  margin-right: 8px;
+  display: inline-block; /* Ensures margin is applied correctly */
+  /* Future: Could use ::before to add content or specific icons */
+  /* Example for a simple dot, can be expanded with content property for each class like .gh::before */
+  /* width: 8px; */
+  /* height: 8px; */
+  /* background-color: currentColor; */ /* Or a specific color */
+  /* border-radius: 50%; */ 
+}
+
+/* Optional: Specific icon placeholder styling if needed */
+/* .contact-icon.gh::before { content: 'G'; } */
+/* .contact-icon.email::before { content: '@'; } */
+/* .contact-icon.li::before { content: 'L'; } */
+
+/* Footer */
+.about-me-container footer {
+  text-align: center;
+  margin-top: 40px;
+  padding-top: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.back-to-home-button {
+  background-color: #6c757d;
+  color: white;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 1em;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.back-to-home-button:hover {
+  background-color: #545b62;
+}
+
+/* Make each section a card */
+.about-me-container section {
+  background-color: #fff; /* Card background */
+  padding: 25px;
+  border-radius: 8px;
+  margin-bottom: 30px; /* Space between cards */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07); /* Subtle shadow for cards */
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.about-me-container section:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1); /* Slightly more prominent shadow on hover */
+}
+
+/* Adjust h3 styling within cards */
+.about-me-container section h3 {
+  margin-top: 0; /* Remove top margin as section has padding */
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  /* border-bottom: 1px solid #e9ecef; */ /* Optional: keep or remove individual h3 border */
+}
+
+/* Ensure other h3 in other sections don't get white text if not intended */
+.about-me-container section:not(.profile-intro) h3 {
+  color: #34495e;
+}

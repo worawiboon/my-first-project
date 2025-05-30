@@ -1,0 +1,146 @@
+.game-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.game-info {
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  font-weight: bold;
+  text-align: center; /* Center align game info and upgrades */
+}
+
+.upgrades-info {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  font-size: 0.9em;
+  font-weight: normal;
+}
+
+.upgrades-info p {
+  margin-top: 0;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.upgrades-info span {
+  display: block; /* Each upgrade on a new line */
+  margin-bottom: 3px;
+}
+
+.game-area {
+  width: 600px;
+  height: 400px;
+  border: 2px solid black;
+  position: relative; /* Important for positioning elements within this area */
+  background-color: #e0e0e0; /* Light grey background for the game area */
+  overflow: hidden; /* Prevent player from moving outside visibly */
+}
+
+.player {
+  width: 30px;
+  height: 30px;
+  background-color: blue; /* Player will be a blue square for now */
+  position: absolute; /* Positioned relative to game-area */
+  border-radius: 5px; /* Slightly rounded corners */
+}
+
+.zombie {
+  /* Base zombie style - will be overridden or added to by specific types */
+  /* width and height are now set by zombie object properties in HTML */
+  background-color: grey; /* Default/fallback color */
+  position: absolute;
+  border-radius: 5px;
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+/* Zombie type specific styles */
+.zombie-normal {
+  background-color: #6ab04c; /* Greenish */
+}
+
+.zombie-runner {
+  background-color: #f9ca24; /* Yellowish - fast */
+  /* Optionally, make them slightly smaller if not done by width/height in TS */
+  /* border-radius: 3px; */ 
+}
+
+.zombie-brute {
+  background-color: #eb4d4b; /* Reddish - tough */
+  /* Optionally, make them slightly larger if not done by width/height in TS */
+  /* border: 2px solid #c23616; */ 
+}
+
+/* HP Bar Styles */
+.hp-bar-background {
+  position: absolute;
+  bottom: -10px; /* Position below the zombie */
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background-color: #555; /* Dark grey background for HP bar */
+  border-radius: 3px;
+  overflow: hidden; /* To ensure foreground bar conforms to radius */
+}
+
+.hp-bar-foreground {
+  height: 100%;
+  background-color: #2ecc71; /* Green for HP */
+  border-radius: 3px;
+  transition: width 0.2s ease-out; /* Smooth transition for HP changes */
+}
+
+/* Adjust HP bar for zombies taking damage - different color for low HP */
+.zombie .hp-bar-foreground[style*="width: 50%"] ~ .hp-bar-foreground,
+.zombie .hp-bar-foreground[style*="width: 4"] ~ .hp-bar-foreground, /* Covers 40-49% */
+.zombie .hp-bar-foreground[style*="width: 3"] ~ .hp-bar-foreground, /* Covers 30-39% */
+.zombie .hp-bar-foreground[style*="width: 2"] ~ .hp-bar-foreground, /* Covers 20-29% */
+.zombie .hp-bar-foreground[style*="width: 1"] ~ .hp-bar-foreground, /* Covers 10-19% */
+.zombie .hp-bar-foreground[style*="width: 0"] ~ .hp-bar-foreground {
+  /* This selector is a bit tricky for dynamic width. A better way might be a class binding in TS. */
+  /* For simplicity, we'll rely on the green color for now. Advanced styling would require more complex logic or classes. */
+}
+/* A simpler approach for damaged HP color would be to change background color when HP is low in TS via a class */
+/* For now, the default green will be used. */
+
+.bullet {
+  width: 5px; /* Default width, can be overridden by bullet.width */
+  height: 15px; /* Default height, can be overridden by bullet.height */
+  background-color: red;
+  position: absolute;
+  border-radius: 2px;
+}
+
+.game-over-message {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgba(0, 0, 0, 0.75);
+  color: white;
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 1.5em;
+  z-index: 10; /* Ensure it's above other elements */
+}
+
+.game-over-message p {
+  margin: 5px 0;
+}
+
+.controls-info {
+  margin-top: 10px;
+  font-size: 0.9em;
+  color: #555;
+}
+
+p {
+  margin-top: 10px;
+} 
